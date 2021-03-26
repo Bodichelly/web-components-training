@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="counter.js" defer></script>
+</head>
+
+<body>
+
+    <template id="counter">
+        <style>
+            .globalWrapper {
+                border: 3px inset rgba(65, 164, 50, 0.74);
+                border-radius: 11px;
+                display: grid;
+                max-width: 250px;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 0.3fr 0.4fr;
+                gap: 0px 0px;
+                grid-template-areas:
+                    "title value"
+                    "buttonWrapper buttonWrapper";
+            }
+
+            .buttonWrapper {
+                grid-area: buttonWrapper;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .title {
+                grid-area: title;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .value {
+                grid-area: value;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+            }
+
+
+            button {
+                border-radius: 4px;
+                border: 1px solid #ffffff;
+                display: inline-block;
+                cursor: pointer;
+                color: #ffffff;
+                font-family: Arial;
+                font-size: 15px;
+                padding: 6px 15px;
+                text-decoration: none;
+
+            }
+
+            .plus {
+                background-color: #44c767;
+                text-shadow: 0px 1px 0px #2f6627;
+            }
+
+            .minus {
+                background-color: #e4685d;
+                text-shadow: 0px 1px 0px #b23e35;
+            }
+
+            .plus:hover {
+                background-color: #5cbf2a;
+                ;
+            }
+
+            .minus:hover {
+                background-color: #d83526;
+            }
+        </style>
+        <div class="globalWrapper">
+
+            <div class="title">
+                <slot name="lable"><p>Default Lable</p></slot>
+            </div>
+            <div class="value"><span id="value">0</span></div>
+            <div class="buttonWrapper">
+                <button class="plus" id="plus">Increment</button>
+                <button class="minus" id="minus">Decrement</button>
+            </div>
+        </div>
+
+
+
+    </template>
+    <custom-counter initValue=9 allowNegative=false><p slot="lable">Counter:</p></custom-counter>
+    <custom-counter><p slot="lable">Counter1:</p></custom-counter>
+    <custom-counter></custom-counter>
+</body>
+
+</html>
